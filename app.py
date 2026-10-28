@@ -83,10 +83,18 @@ def delete_complaint(complaint_id):
 initialize_database()
 
 
+
 # ---------------- STYLING ----------------
 st.markdown("""
 <style>
-    .stApp { background-color: #f1f5f9; }
+    /* Main Background */
+    .stApp,
+    [data-testid="stAppViewContainer"],
+    [data-testid="stMain"] {
+        background-color: #F0EBFF !important;
+    }
+
+    /* Header Banner */
     .main-title {
         background: #172554;
         padding: 1.1rem 1.4rem;
@@ -94,13 +102,29 @@ st.markdown("""
         color: white;
         margin-bottom: 1rem;
     }
-    .main-title h1 { color: white; margin: 0; font-size: 1.8rem; }
-    .main-title p { color: #cbd5e1; margin: .35rem 0 0 0; }
+
+    .main-title h1 {
+        color: white;
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    .main-title p {
+        color: #cbd5e1;
+        margin: .35rem 0 0 0;
+    }
+
+    /* Dashboard Metric Cards */
     div[data-testid="stMetric"] {
-        background: white;
+        background: #FFFFFF;
         padding: 1rem;
-        border: 1px solid #e2e8f0;
+        border: 1px solid #DDD6FE;
         border-radius: 12px;
+    }
+
+    /* Top Header */
+    [data-testid="stHeader"] {
+        background-color: transparent !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -112,6 +136,20 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# ---------------- DASHBOARD ----------------
+df = fetch_complaints()
+total = len(df)
+pending = int((df["status"] == "Pending").sum()) if not df.empty else 0
+in_progress = int((df["status"] == "In Progress").sum()) if not df.empty else 0
+resolved = int((df["status"] == "Resolved").sum()) if not df.empty else 0
+
+m1, m2, m3, m4 = st.columns(4)
+m1.metric("TOTAL COMPLAINTS", total)
+m2.metric("PENDING", pending)
+m3.metric("IN PROGRESS", in_progress)
+m4.metric("RESOLVED", resolved)
+
+st.divider()
 
 # ---------------- DASHBOARD ----------------
 df = fetch_complaints()
