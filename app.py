@@ -87,44 +87,72 @@ initialize_database()
 # ---------------- STYLING ----------------
 st.markdown("""
 <style>
-    /* Main Background */
+    /* Entire Website Background */
     .stApp,
     [data-testid="stAppViewContainer"],
-    [data-testid="stMain"] {
-        background-color: #F0EBFF !important;
+    [data-testid="stMain"],
+    [data-testid="stMainBlockContainer"] {
+        background-color: #EDE9FE !important;
     }
 
-    /* Header Banner */
+    /* Main Heading */
     .main-title {
-        background: #172554;
-        padding: 1.1rem 1.4rem;
-        border-radius: 12px;
-        color: white;
-        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #312E81, #6D28D9);
+        padding: 1.4rem 1.6rem;
+        border-radius: 14px;
+        color: #FFFFFF;
+        margin-bottom: 1.5rem;
     }
 
     .main-title h1 {
-        color: white;
+        color: #FFFFFF;
         margin: 0;
         font-size: 1.8rem;
     }
 
     .main-title p {
-        color: #cbd5e1;
-        margin: .35rem 0 0 0;
+        color: #E9D5FF;
+        margin: .4rem 0 0 0;
     }
 
-    /* Dashboard Metric Cards */
+    /* Dashboard Cards - Lavender, Not White */
     div[data-testid="stMetric"] {
-        background: #FFFFFF;
-        padding: 1rem;
-        border: 1px solid #DDD6FE;
+        background-color: #DDD6FE !important;
+        padding: 1.2rem;
+        border: 1px solid #C4B5FD;
         border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(49, 46, 129, 0.08);
+    }
+
+    div[data-testid="stMetric"] label,
+    div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+        color: #312E81 !important;
+    }
+
+    /* Input Fields */
+    .stTextInput input,
+    .stTextArea textarea,
+    .stSelectbox [data-baseweb="select"] > div {
+        background-color: #F5F3FF !important;
+        color: #312E81 !important;
+        border-color: #C4B5FD !important;
+    }
+
+    /* Buttons */
+    .stButton > button,
+    .stFormSubmitButton > button {
+        border-radius: 8px;
+        font-weight: 600;
     }
 
     /* Top Header */
     [data-testid="stHeader"] {
-        background-color: transparent !important;
+        background-color: #EDE9FE !important;
+    }
+
+    /* Dividers */
+    hr {
+        border-color: #C4B5FD !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -135,6 +163,7 @@ st.markdown("""
     <p>Digital Complaint Management System</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 # ---------------- DASHBOARD ----------------
 df = fetch_complaints()
