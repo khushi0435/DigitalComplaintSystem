@@ -84,88 +84,211 @@ initialize_database()
 
 
 
-# ---------------- STYLING ----------------
+
+# ---------------- PROFESSIONAL DARK THEME ----------------
 st.markdown("""
 <style>
-    /* Entire Website Background */
-    .stApp,
-    [data-testid="stAppViewContainer"],
-    [data-testid="stMain"],
-    [data-testid="stMainBlockContainer"] {
-        background-color: #EDE9FE !important;
-    }
 
-    /* Main Heading */
-    .main-title {
-        background: linear-gradient(135deg, #312E81, #6D28D9);
-        padding: 1.4rem 1.6rem;
-        border-radius: 14px;
-        color: #FFFFFF;
-        margin-bottom: 1.5rem;
-    }
+/* Main Website Background */
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stMainBlockContainer"] {
+    background-color: #0B1020 !important;
+    color: #E5E7EB !important;
+}
 
-    .main-title h1 {
-        color: #FFFFFF;
-        margin: 0;
-        font-size: 1.8rem;
-    }
+/* Main Heading */
+.main-title {
+    background: linear-gradient(135deg, #312E81, #6D28D9, #7C3AED);
+    padding: 1.5rem 1.8rem;
+    border-radius: 16px;
+    color: white !important;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 20px rgba(109, 40, 217, 0.25);
+}
 
-    .main-title p {
-        color: #E9D5FF;
-        margin: .4rem 0 0 0;
-    }
+.main-title h1 {
+    color: #FFFFFF !important;
+    margin: 0;
+    font-size: 1.9rem;
+    font-weight: 700;
+}
 
-    /* Dashboard Cards - Lavender, Not White */
-    div[data-testid="stMetric"] {
-        background-color: #DDD6FE !important;
-        padding: 1.2rem;
-        border: 1px solid #C4B5FD;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(49, 46, 129, 0.08);
-    }
+.main-title p {
+    color: #DDD6FE !important;
+    margin: 0.5rem 0 0 0;
+    font-size: 1rem;
+}
 
-    div[data-testid="stMetric"] label,
-    div[data-testid="stMetric"] [data-testid="stMetricValue"] {
-        color: #312E81 !important;
-    }
+/* General Text */
+.stApp p,
+.stApp label,
+.stApp span,
+.stApp h1,
+.stApp h2,
+.stApp h3,
+.stApp h4 {
+    color: #E5E7EB;
+}
 
-    /* Input Fields */
-    .stTextInput input,
-    .stTextArea textarea,
-    .stSelectbox [data-baseweb="select"] > div {
-        background-color: #F5F3FF !important;
-        color: #312E81 !important;
-        border-color: #C4B5FD !important;
-    }
+/* Dashboard Metric Cards */
+div[data-testid="stMetric"] {
+    background: linear-gradient(145deg, #171D35, #211A3D) !important;
+    padding: 1.2rem;
+    border: 1px solid #49358A;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.20);
+}
 
-    /* Buttons */
-    .stButton > button,
-    .stFormSubmitButton > button {
-        border-radius: 8px;
-        font-weight: 600;
-    }
+/* Metric Labels */
+div[data-testid="stMetric"] label {
+    color: #C4B5FD !important;
+}
 
-    /* Top Header */
-    [data-testid="stHeader"] {
-        background-color: #EDE9FE !important;
-    }
+/* Metric Values */
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    color: #FFFFFF !important;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
 
-    /* Dividers */
-    hr {
-        border-color: #C4B5FD !important;
-    }
+/* Input Fields */
+.stTextInput input,
+.stTextArea textarea,
+.stNumberInput input {
+    background-color: #151B2E !important;
+    color: #FFFFFF !important;
+    border: 1px solid #51418F !important;
+    border-radius: 8px !important;
+}
+
+/* Dropdowns */
+.stSelectbox [data-baseweb="select"] > div,
+.stMultiSelect [data-baseweb="select"] > div {
+    background-color: #151B2E !important;
+    color: #FFFFFF !important;
+    border-color: #51418F !important;
+}
+
+/* Dropdown Text */
+.stSelectbox div,
+.stMultiSelect div {
+    color: #E5E7EB;
+}
+
+/* Buttons */
+.stButton > button,
+.stFormSubmitButton > button {
+    background: linear-gradient(135deg, #6D28D9, #7C3AED) !important;
+    color: #FFFFFF !important;
+    border: 1px solid #8B5CF6 !important;
+    border-radius: 9px !important;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+/* Button Hover */
+.stButton > button:hover,
+.stFormSubmitButton > button:hover {
+    background: linear-gradient(135deg, #7C3AED, #9333EA) !important;
+    border-color: #C4B5FD !important;
+    transform: translateY(-1px);
+}
+
+/* Tables and Dataframes */
+[data-testid="stDataFrame"],
+[data-testid="stTable"] {
+    background-color: #11172A !important;
+    border: 1px solid #312E81;
+    border-radius: 10px;
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] {
+    background-color: #11172A;
+    border-radius: 10px;
+    gap: 8px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    color: #C4B5FD !important;
+}
+
+.stTabs [aria-selected="true"] {
+    background-color: #312E81 !important;
+}
+
+/* Forms */
+[data-testid="stForm"] {
+    background-color: #11172A !important;
+    padding: 1rem;
+    border: 1px solid #312E81;
+    border-radius: 12px;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background-color: #0F1428 !important;
+}
+
+[data-testid="stSidebar"] * {
+    color: #E5E7EB;
+}
+
+/* Top Header */
+[data-testid="stHeader"] {
+    background-color: #0B1020 !important;
+}
+
+/* Dividers */
+hr {
+    border-color: #312E81 !important;
+}
+
+/* Captions */
+.stCaption,
+[data-testid="stCaptionContainer"] {
+    color: #A5B4FC !important;
+}
+
+/* Checkboxes and Radio Buttons */
+.stCheckbox label,
+.stRadio label {
+    color: #E5E7EB !important;
+}
+
+/* Alerts */
+[data-testid="stAlert"] {
+    background-color: #171D35;
+    border-radius: 10px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0B1020;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #51418F;
+    border-radius: 10px;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
+# ---------------- MAIN HEADING ----------------
 st.markdown("""
 <div class="main-title">
     <h1>DCMS | Complaint Management</h1>
     <p>Digital Complaint Management System</p>
 </div>
 """, unsafe_allow_html=True)
-
-
-
 
 # ---------------- DASHBOARD ----------------
 df = fetch_complaints()
