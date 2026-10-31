@@ -165,20 +165,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ---------------- DASHBOARD ----------------
-df = fetch_complaints()
-total = len(df)
-pending = int((df["status"] == "Pending").sum()) if not df.empty else 0
-in_progress = int((df["status"] == "In Progress").sum()) if not df.empty else 0
-resolved = int((df["status"] == "Resolved").sum()) if not df.empty else 0
 
-m1, m2, m3, m4 = st.columns(4)
-m1.metric("TOTAL COMPLAINTS", total)
-m2.metric("PENDING", pending)
-m3.metric("IN PROGRESS", in_progress)
-m4.metric("RESOLVED", resolved)
-
-st.divider()
 
 # ---------------- DASHBOARD ----------------
 df = fetch_complaints()
