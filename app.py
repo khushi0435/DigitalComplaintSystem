@@ -89,199 +89,249 @@ initialize_database()
 st.markdown("""
 <style>
 
-/* Main Website Background */
+/* ===== MAIN BACKGROUND ===== */
 .stApp,
 [data-testid="stAppViewContainer"],
 [data-testid="stMain"],
-[data-testid="stMainBlockContainer"] {
-    background-color: #0B1020 !important;
-    color: #E5E7EB !important;
+[data-testid="stMainBlockContainer"],
+[data-testid="stBottom"] {
+    background: #080B18 !important;
+    color: #F1F5F9 !important;
 }
 
-/* Main Heading */
+/* Main content area */
+[data-testid="stMainBlockContainer"] {
+    padding-top: 2rem;
+}
+
+/* ===== MAIN HEADING ===== */
 .main-title {
-    background: linear-gradient(135deg, #312E81, #6D28D9, #7C3AED);
-    padding: 1.5rem 1.8rem;
-    border-radius: 16px;
-    color: white !important;
+    background: linear-gradient(115deg, #171044 0%, #351078 55%, #641BEA 100%);
+    padding: 1.7rem 2rem;
+    border: 1px solid #8B5CF6;
+    border-radius: 18px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 5px 20px rgba(109, 40, 217, 0.25);
+    box-shadow: 0 0 22px rgba(124, 58, 237, 0.25);
 }
 
 .main-title h1 {
     color: #FFFFFF !important;
+    font-size: 2.1rem;
+    font-weight: 800;
     margin: 0;
-    font-size: 1.9rem;
-    font-weight: 700;
 }
 
 .main-title p {
     color: #DDD6FE !important;
-    margin: 0.5rem 0 0 0;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    margin: 0.4rem 0 0 0;
 }
 
-/* General Text */
-.stApp p,
-.stApp label,
-.stApp span,
+/* ===== ALL TEXT ===== */
 .stApp h1,
 .stApp h2,
 .stApp h3,
-.stApp h4 {
-    color: #E5E7EB;
+.stApp h4,
+.stApp p,
+.stApp label,
+.stApp .stMarkdown,
+.stApp [data-testid="stCaptionContainer"] {
+    color: #E2E8F0;
 }
 
-/* Dashboard Metric Cards */
-div[data-testid="stMetric"] {
-    background: linear-gradient(145deg, #171D35, #211A3D) !important;
-    padding: 1.2rem;
-    border: 1px solid #49358A;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.20);
+/* ===== DASHBOARD CARDS ===== */
+[data-testid="stMetric"] {
+    background: linear-gradient(145deg, #17162F, #21163D) !important;
+    border: 1px solid #51339B !important;
+    border-radius: 15px !important;
+    padding: 1.3rem !important;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
 }
 
-/* Metric Labels */
-div[data-testid="stMetric"] label {
+[data-testid="stMetricLabel"],
+[data-testid="stMetricLabel"] p {
     color: #C4B5FD !important;
 }
 
-/* Metric Values */
-div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+[data-testid="stMetricValue"],
+[data-testid="stMetricValue"] div {
     color: #FFFFFF !important;
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2rem !important;
+    font-weight: 800 !important;
 }
 
-/* Input Fields */
+[data-testid="stMetricDelta"] {
+    color: #A78BFA !important;
+}
+
+/* ===== TEXT INPUTS ===== */
 .stTextInput input,
 .stTextArea textarea,
 .stNumberInput input {
-    background-color: #151B2E !important;
+    background: #11162A !important;
     color: #FFFFFF !important;
-    border: 1px solid #51418F !important;
-    border-radius: 8px !important;
+    border: 1px solid #49377F !important;
+    border-radius: 9px !important;
+    caret-color: #C4B5FD !important;
 }
 
-/* Dropdowns */
+/* Placeholder text */
+.stTextInput input::placeholder,
+.stTextArea textarea::placeholder {
+    color: #929AB5 !important;
+    opacity: 1;
+}
+
+/* Input focus */
+.stTextInput input:focus,
+.stTextArea textarea:focus,
+.stNumberInput input:focus {
+    border-color: #A78BFA !important;
+    box-shadow: 0 0 0 1px #7C3AED !important;
+}
+
+/* ===== SELECTBOXES ===== */
 .stSelectbox [data-baseweb="select"] > div,
 .stMultiSelect [data-baseweb="select"] > div {
-    background-color: #151B2E !important;
+    background-color: #11162A !important;
+    border-color: #49377F !important;
     color: #FFFFFF !important;
-    border-color: #51418F !important;
+    border-radius: 9px !important;
 }
 
-/* Dropdown Text */
-.stSelectbox div,
-.stMultiSelect div {
-    color: #E5E7EB;
+/* Selected dropdown value */
+.stSelectbox [data-baseweb="select"] span,
+.stMultiSelect [data-baseweb="select"] span {
+    color: #FFFFFF !important;
 }
 
-/* Buttons */
+/* Dropdown popup */
+[data-baseweb="popover"],
+[data-baseweb="menu"],
+[role="listbox"] {
+    background-color: #17162F !important;
+    border: 1px solid #49377F !important;
+}
+
+[role="option"] {
+    background-color: #17162F !important;
+    color: #FFFFFF !important;
+}
+
+[role="option"]:hover {
+    background-color: #39206D !important;
+}
+
+/* ===== BUTTONS ===== */
 .stButton > button,
 .stFormSubmitButton > button {
-    background: linear-gradient(135deg, #6D28D9, #7C3AED) !important;
+    background: linear-gradient(110deg, #6D28D9, #9333EA) !important;
     color: #FFFFFF !important;
-    border: 1px solid #8B5CF6 !important;
-    border-radius: 9px !important;
-    padding: 0.5rem 1rem;
-    font-weight: 600;
-    transition: 0.2s ease;
+    border: 1px solid #A78BFA !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    min-height: 2.7rem;
+    transition: all 0.2s ease;
 }
 
-/* Button Hover */
 .stButton > button:hover,
 .stFormSubmitButton > button:hover {
-    background: linear-gradient(135deg, #7C3AED, #9333EA) !important;
-    border-color: #C4B5FD !important;
-    transform: translateY(-1px);
+    background: linear-gradient(110deg, #7C3AED, #A855F7) !important;
+    border-color: #DDD6FE !important;
+    box-shadow: 0 0 14px rgba(139, 92, 246, 0.35);
 }
 
-/* Tables and Dataframes */
-[data-testid="stDataFrame"],
-[data-testid="stTable"] {
-    background-color: #11172A !important;
-    border: 1px solid #312E81;
-    border-radius: 10px;
+/* ===== FORMS ===== */
+[data-testid="stForm"] {
+    background: #0F1428 !important;
+    border: 1px solid #493080 !important;
+    border-radius: 15px !important;
+    padding: 1.3rem !important;
 }
 
-/* Tabs */
+/* ===== TABS ===== */
 .stTabs [data-baseweb="tab-list"] {
-    background-color: #11172A;
-    border-radius: 10px;
+    background: #0F1428 !important;
+    border-bottom: 1px solid #493080 !important;
     gap: 8px;
 }
 
 .stTabs [data-baseweb="tab"] {
-    color: #C4B5FD !important;
+    background: #15152D !important;
+    color: #DDD6FE !important;
+    border-radius: 8px 8px 0 0 !important;
 }
 
 .stTabs [aria-selected="true"] {
-    background-color: #312E81 !important;
+    background: #39206D !important;
+    color: #FFFFFF !important;
 }
 
-/* Forms */
-[data-testid="stForm"] {
-    background-color: #11172A !important;
-    padding: 1rem;
-    border: 1px solid #312E81;
-    border-radius: 12px;
+/* ===== DATAFRAME / TABLE CONTAINER ===== */
+[data-testid="stDataFrame"],
+[data-testid="stTable"] {
+    background: #0F1428 !important;
+    border: 1px solid #493080 !important;
+    border-radius: 12px !important;
+    overflow: hidden;
 }
 
-/* Sidebar */
+/* ===== SIDEBAR ===== */
 [data-testid="stSidebar"] {
-    background-color: #0F1428 !important;
+    background: linear-gradient(180deg, #0D1025, #171039) !important;
+    border-right: 1px solid #30215C !important;
 }
 
 [data-testid="stSidebar"] * {
-    color: #E5E7EB;
+    color: #E2E8F0;
 }
 
-/* Top Header */
+/* ===== TOP TOOLBAR ===== */
 [data-testid="stHeader"] {
-    background-color: #0B1020 !important;
+    background: rgba(8, 11, 24, 0.98) !important;
 }
 
-/* Dividers */
+/* ===== DIVIDERS ===== */
 hr {
-    border-color: #312E81 !important;
+    border-color: #30215C !important;
 }
 
-/* Captions */
+/* ===== ALERTS ===== */
+[data-testid="stAlert"] {
+    background: #15152D !important;
+    border: 1px solid #493080 !important;
+    border-radius: 10px !important;
+}
+
+/* ===== CHECKBOXES / RADIO ===== */
+.stCheckbox label,
+.stRadio label {
+    color: #E2E8F0 !important;
+}
+
+/* ===== CAPTIONS ===== */
 .stCaption,
 [data-testid="stCaptionContainer"] {
     color: #A5B4FC !important;
 }
 
-/* Checkboxes and Radio Buttons */
-.stCheckbox label,
-.stRadio label {
-    color: #E5E7EB !important;
-}
-
-/* Alerts */
-[data-testid="stAlert"] {
-    background-color: #171D35;
-    border-radius: 10px;
-}
-
-/* Scrollbar */
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0B1020;
+    background: #080B18;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #51418F;
+    background: #51339B;
     border-radius: 10px;
 }
 
 </style>
 """, unsafe_allow_html=True)
-
 # ---------------- MAIN HEADING ----------------
 st.markdown("""
 <div class="main-title">
